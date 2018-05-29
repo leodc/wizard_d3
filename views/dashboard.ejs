@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<% include sections/head %>
+		
+		<!-- jQuery-ui -->
+		<link rel="stylesheet" href="/js/plugins/jquery-ui/jquery-ui.min.css">
+		
+		<!-- Bootstrap panel -->
+		<link rel="stylesheet" href="/js/plugins/lobipanel-master/lobipanel.min.css">
+		<!-- Bootstrap select -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
+		<!-- Bootstrap editable -->
+		<link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+		
+		<!-- DC -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dc/2.0.0-beta.33/dc.min.css">
+		<!-- Leaflet -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.css" />
+	</head>
+	
+	<body>
+		<% include sections/navigation_bar %>
+		
+	    <div class="container">
+	    	<a class="h2" id="originalName" data-type='text' data-pk='dataset' data-placement="bottom" data-title='Nuevo título para el dataset.'><%= datasetName %></a>
+	        <div class="dc-data-count" style="width:100%;">
+				<span>
+					<span class="filter-count"></span>
+					 seleccionados de  
+					<span class="total-count"></span>
+					records | 
+					<a href="javascript:dc.filterAll('chartgroup'); dc.renderAll('chartgroup');">Reset All</a>
+				</span>
+			</div>
+	    </div>
+	    
+	    <div class="container-fluid" id="graphsContainer" style="margin-top: 5px; margin-bottom:5px;"></div>
+	    
+	    <div class="panel panel-default" id="dataPanel">
+		    <div class="panel-heading">
+		        <div class="panel-title">
+		            <h4>Datos</h4>
+		        </div>
+		    </div>
+		    <div class="panel-body">
+		    	<div id="paging">
+					Mostrando primeros <div class="col-xs-1" style="padding:0px;margin:0px;border:0px;float:none;display:inline-block;"><input size="5" type="number" id="tableSize" value="20" class="form-control input-sm"></div> elementos
+					<input id="applyTableSize" class="btn" type="Button" value="Aplicar" onclick="javascript:window.updateTableSize()" />
+				</div>
+		        <table class='table table-condensed table-striped table-fixed' id='dc-table-graph'>
+					<thead>
+						<tr class='header'></tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+		    </div>
+		</div>
+		
+		<% include modals/newGraph.ejs %>
+		<% include modals/dataType.ejs %>
+		
+		<script>
+			window.datasetId = "<%=datasetId%>"
+			window.dataCoords = JSON.parse('<%-JSON.stringify(documentSchema.coords)%>');
+			window.dataDates = JSON.parse('<%-JSON.stringify(documentSchema.dates)%>');
+			window.dataNumbers = JSON.parse('<%-JSON.stringify(documentSchema.numbers)%>');
+			window.dataStrings = JSON.parse('<%-JSON.stringify(documentSchema.strings)%>');
+		</script>
+		
+		<!-- Drag items --
+		<script src="js/dragItems.js"></script>
+		
+		<!-- Socket -->
+		<script src="/socket.io/socket.io.js"></script>
+		
+		<!-- jQuery-ui -->
+		<script src="/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+		
+		<!-- Bootstrap panel -->
+		<script src="/js/plugins/lobipanel-master/lobipanel.min.js"></script>
+		<!-- Bootstrap select -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+		<!-- Bootstrap editable -->
+		<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+
+
+		<!-- FileSaver -->
+		<script src="/js/fileSaver.js"></script>
+		
+		<!-- decimalRound -->
+		<script src='/js/decimalRound.js'></script>
+		<!-- Colorbrewer -->
+		<script src="/js/colorbrewer.js"></script>
+		<!-- Crossfilter -->
+		<script src='/js/crossfilter.min.js'></script>
+		<!-- D3 -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+		<!-- DC -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.0.0-beta.33/dc.min.js"></script>
+		<!-- Leaflet -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.js"></script>
+		
+		<!-- DC-leaflet -->
+		<script src='/js/plugins/dc.leaflet.js'></script>
+		
+		<!-- Graphs -->
+		<script src='/js/graphs/datatable.js'></script>
+		<script src='/js/graphs/bar.js'></script>
+		<script src='/js/graphs/pie.js'></script>
+		<script src='/js/graphs/line.js'></script>
+		<script src='/js/graphs/row.js'></script>
+		<script src='/js/graphs/bubble.js'></script>
+		<script src='/js/graphs/scatter.js'></script>
+		<script src='/js/graphs/dayOfWeek.js'></script>
+		<script src='/js/graphs/map.js'></script>
+		
+		<script src='/js/socketDashboard.js'></script>
+		<script src='/js/dashboard.js'></script>
+	</body>
+</html>

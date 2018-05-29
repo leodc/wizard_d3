@@ -1,0 +1,141 @@
+<!-- Modal -->
+<div class="modal fade" id="newGraphDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Nueva gráfica</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div class="form-group">
+                        <label for="newChartType">Tipo</label>
+                        <select class="form-control selectpicker" id="newChartType">
+                            <option value="bar" input-div="bar-input">Bars</option>
+                            <option value="bubble" input-div="bubble-input">Bubble</option>
+                            <option value="days" input-div="days-input">Days of the week</option>
+                            <option value="line" input-div="line-input">Line</option>
+                            <option value="map" input-div="map-input">Map</option>
+                            <option value="pie" input-div="pie-input">Pie</option>
+                            <option value="row" input-div="row-input">Row</option>
+                            <option value="scatter" input-div="scatter-input">Scatter</option>
+                        </select>
+                    </div>
+                    
+                    <!--h3>Columnas de valores</h3-->
+                    
+                    <div id="bar-input" class="custom-input">
+                        <div class="form-group">
+                            <label for="bar-value">Columna con valores</label>
+                            <select class="form-control  selectpicker" id="bar-value">
+                            </select>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" id="fullRowBar">Usar dos columnas.</label>
+                        </div>
+                    </div>
+                    
+                    <div id="pie-input" class="custom-input">
+                        <div class="form-group">
+                            <label for="pie-value">Columna con valores</label>
+                            <select class="form-control selectpicker" id="pie-value">
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div id="row-input" class="custom-input">
+                        <div class="form-group">
+                            <label for="row-value">Columna con valores</label>
+                            <select class="form-control  selectpicker" id="row-value">
+                            </select>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" id="fullRowRow">Usar dos columnas.</label>
+                        </div>
+                    </div>
+                    
+                    <div id="days-input" class="custom-input">
+                        <div class="form-group">
+                            <label for="row-value">Primer Valor</label>
+                            <select class="form-control selectpicker" id="days-value">
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div id="line-input" class="custom-input">
+                        <div class="form-group">
+                            <label for="line-value">Primer Valor</label>
+                            <select class="form-control selectpicker" id="line-value">
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div id="map-input" class="custom-input">
+                        <div class="form-group">
+                            <label for="map-value">Latitude</label>
+                            <select class="form-control selectpicker" id="lat-value">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                                <label for="map-value">Longitude</label>
+                                <select class="form-control selectpicker" id="lng-value">
+                                </select>
+                            </div>
+                    </div>
+                    
+                    <div id="bubble-input" class="custom-input">
+                        <div class="form-group">
+                            <label for="bubble-x-value">X axis</label>
+                            <select class="form-control selectpicker" id="bubble-x-value">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bubble-y-value">Y axis</label>
+                            <select class="form-control selectpicker" id="bubble-y-value">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bubble-radius-value">Radius value</label>
+                            <select class="form-control selectpicker" id="bubble-radius-value">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bubble-color-value">Color value</label>
+                            <select class="form-control selectpicker" id="bubble-color-value">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bubble-label-value">Label value</label>
+                            <select class="form-control selectpicker" id="bubble-label-value">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bubble-label-value">Agrupar por</label>
+                            <select class="form-control selectpicker" id="bubble-group-value">
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div id="scatter-input" class="custom-input">
+                        <div class="form-group">
+                            <label for="scatter-x-value">X axis</label>
+                            <select class="form-control selectpicker" id="scatter-x-value">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="scatter-y-value">Y axis</label>
+                            <select class="form-control selectpicker" id="scatter-y-value">
+                            </select>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="addGraph">Agregar gráfica</button>
+            </div>
+        </div>
+    </div>
+</div>
