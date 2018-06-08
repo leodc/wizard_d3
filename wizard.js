@@ -31,12 +31,13 @@ io.of('/dataset').on('connection', datasetSocket);
 
 
 // start
-db.connect('mongodb://localhost:27017/wizard', function(err) {
+var mongoUrl = process.env.MONGO_URL || "mongodb://localhost:27017/wizard"
+db.connect(mongoUrl, function(err) {
     if (err) {
         console.log('Unable to connect to Mongo');
         process.exit(1);
     }
-    
+
     http.listen(app.get('port'), function(){
         console.log('Express server listening on port ' + app.get('port'));
     });
@@ -48,25 +49,25 @@ function datasetSocket(socket){
     socket.on("getDataset", function(datasetId){
         dataset.get(datasetId, function(err, docs){
             if(err) console.error("Error getting the data");
-            
+
             socket.emit("dataset", docs);
         });
     });
-    
-    
+
+
     socket.on("getGraphs", function(datasetId){
         dashboard.getGraphs(datasetId, function(err, docs){
             if(err) console.error("Error getting the graphs", err);
-            
+
             socket.emit("graphs", docs);
-        }); 
+        });
     });
-    
-    
+
+
     socket.on("postGraph", function(req){
         dashboard.insertGraph(req.datasetId, req.graph, function(err, docs){
             if(err) console.log("Error inserting graph");
-            
+
             socket.emit("postedGraph", req.graph);
         });
     });
